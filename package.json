@@ -1,0 +1,21 @@
+{
+  "name": "crudjs",
+  "version": "0.0.1",
+  "description": "crud with js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon --inspect src/server.js",
+    "test": "test"
+  },
+  "keywords": [
+    "crud",
+    "javascript",
+    "express"
+  ],
+  "author": "André Gois",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

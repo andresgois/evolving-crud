@@ -1,12 +1,15 @@
+require('express-async-errors');
 const express = require('express');
 const app = express();
 app.use(express.json())
 
-const users = [{
-	id: 2,
-	name: "Marcio",
-	age: "20"
-}];
+const users = [
+    {
+        id: 2,
+        name: "Marcio",
+        age: "20"
+    }
+];
 
 app.get('/', (req, res) => {
     res.json({msg: 'OK'});
@@ -19,6 +22,9 @@ app.get('/users', (req, res) => {
 app.get('/user/:id', (req, res) => {
     var id = req.params.id;
     var user = users.find( u => u.id === Number(id));
+    if(!user){
+        throw new Error("User not found!");
+    }
     res.json(user);
 })
 
@@ -38,7 +44,6 @@ app.put('/user/:id', (req, res) => {
     var position = users.indexOf(user);
 
     Object.assign(users[position], { 
-        id: Number(id),
         name: name, 
         age: age 
     } );
@@ -46,12 +51,26 @@ app.put('/user/:id', (req, res) => {
 })
 
 app.delete('/user/:id', (req, res) => {
-    var id = req.params;
+    var id = req.params.id;
     var user = users.find( u => u.id === Number(id));
     var position = users.indexOf(user);
-
     users.splice(position, 1)
-    res.status(200).send();
+    return res.status(200).send();
+})
+
+app.use( (error, req, res, next) => {
+    if( error instanceof Error){
+        return res.status(404).json({
+            status: 'error',
+            message: `${error.message}`,
+        })
+    }
+
+    return res.status(500).json({
+        status: 'error',
+        message: `Internal server error - ${error.message}`,
+    })
+    //next(error);
 })
 
 app.listen(3000, () => {

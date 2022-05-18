@@ -4,13 +4,7 @@ const { v4: uuid } = require('uuid')
 const app = express();
 app.use(express.json())
 
-const users = [
-    {
-        id: uuid(),
-        name: "Marcio",
-        age: "20"
-    }
-];
+const users = [];
 
 app.get('/', (req, res) => {
     res.json({msg: 'OK'});

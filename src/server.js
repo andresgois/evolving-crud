@@ -1,11 +1,12 @@
 require('express-async-errors');
 const express = require('express');
+const { v4: uuid } = require('uuid')
 const app = express();
 app.use(express.json())
 
 const users = [
     {
-        id: 2,
+        id: uuid(),
         name: "Marcio",
         age: "20"
     }
@@ -21,7 +22,7 @@ app.get('/users', (req, res) => {
 
 app.get('/user/:id', (req, res) => {
     var id = req.params.id;
-    var user = users.find( u => u.id === Number(id));
+    var user = users.find( u => u.id === id);
     if(!user){
         throw new Error("User not found!");
     }
@@ -29,10 +30,10 @@ app.get('/user/:id', (req, res) => {
 })
 
 app.post('/user', (req, res) => {
-    var { id, name, age } = req.body;
+    var { name, age } = req.body;
     var user = {};
 
-    Object.assign(user, { id, name, age } )
+    Object.assign(user, { id: uuid(), name, age } )
     users.push(user)
     res.status(201).send();
 })
@@ -40,7 +41,7 @@ app.post('/user', (req, res) => {
 app.put('/user/:id', (req, res) => {
     var id = req.params.id;
     var { name, age } = req.body;
-    var user = users.find( u => u.id === Number(id));
+    var user = users.find( u => u.id === id);
     var position = users.indexOf(user);
 
     Object.assign(users[position], { 
@@ -52,7 +53,8 @@ app.put('/user/:id', (req, res) => {
 
 app.delete('/user/:id', (req, res) => {
     var id = req.params.id;
-    var user = users.find( u => u.id === Number(id));
+    //var user = users.find( u => u.id === Number(id));
+    var user = users.find( u => u.id === id);
     var position = users.indexOf(user);
     users.splice(position, 1)
     return res.status(200).send();

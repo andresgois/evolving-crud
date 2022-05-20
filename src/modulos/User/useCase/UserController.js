@@ -12,9 +12,8 @@ class UserController {
 
     listOne(req,res) {
         var id = req.params.id;
-        console.log(id)
         const user = userUseCase.indexOne(id)
-        console.log(user)
+
         return res.json(user);
     }
 

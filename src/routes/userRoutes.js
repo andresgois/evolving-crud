@@ -1,39 +1,18 @@
 const express = require('express');
+const UserController = require('../useCase/UserController');
 const route = express.Router();
 
-const UserController = require('../controller/UserController');
 const userController = new UserController();
 
-route.get('/users', (req,res) => {
-    const users = userController.index()
-    return res.json(users);
-});
+route.get('/users', userController.listAll);
 
-route.get('/user/:id', (req,res) => {
-    var id = req.params.id;
-    const user = userController.indexOne(id)
-    return res.json(user);
-});
+route.get('/user/:id', userController.listOne);
 
-route.post('/user', (req,res) => {
-    var { name, age } = req.body;
-    
-    userController.store(name, age);
-    return res.status(201).send()
-});
+route.post('/user', userController.create);
 
-route.put('/user/:id', (req,res) => {
-    var id = req.params.id;
-    var { name, age } = req.body;
-    
-    const user = userController.update(id, name, age);
-    return res.status(204).json(user);
-});
+route.put('/user/:id', userController.update);
 
-route.delete('/user/:id', (req,res) => {
-    var id = req.params.id;
-    userController.delete(id);
-    return res.send();
-});
+route.delete('/user/:id', userController.destroy);
+
 
 module.exports = route;

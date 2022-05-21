@@ -4,6 +4,7 @@
 ## Dados Usuário
 - nome
 - email
+- imagem
 - endereço chave estrangeira
 ## Dados Endereço
 - cep
@@ -13,13 +14,13 @@
 - localidade
 - uf
 
-## Dados Comentários
-- id_comentário
+## Dados post
+- id_post
 - descricao
 
-## Dados Usuários Comentários 
+## Dados Usuários post 
 - id_usuario
-- id_comentario
+- id_post
 
 ## Iniciando o projeto
 - npm init

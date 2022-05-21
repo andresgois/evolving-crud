@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon --inspect src/server.js",
-    "test": "test"
+    "test": "jest --env node"
   },
   "keywords": [
     "crud",
@@ -16,8 +16,10 @@
   "author": "André Gois",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.27.2",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
+    "jest": "^28.1.0",
     "uuid": "^8.3.2"
   }
 }

@@ -5,36 +5,42 @@ const userUseCase = new UserUseCase();
 class UserController {
 
 
-    listAll(req, res) {
-        const users = userUseCase.index();
+    async listAll(req, res) {
+        const users = await userUseCase.index();
+        console.log('users')
+        console.log(users)
         return res.json(users);
     }
 
-    listOne(req,res) {
+    async listOne(req,res) {
         var id = req.params.id;
-        const user = userUseCase.indexOne(id)
+        const user = await userUseCase.indexOne(id)
 
         return res.json(user);
     }
 
-    create(req,res) {
-        var { name, age } = req.body;
+    async create(req,res) {
+        var { 
+            name, imagem, cep,logradouro,complemento,bairro,localidade,uf 
+        } = req.body;
 
-        userUseCase.store(name, age);
+        await userUseCase.store(
+            name, imagem, cep,logradouro,complemento,bairro,localidade,uf 
+        );
         return res.status(201).send()
     }
 
-    update(req,res) {
+    async update(req,res) {
         var id = req.params.id;
         var { name, age } = req.body;
         
-        const user = userUseCase.update(id, name, age);
+        const user = await userUseCase.update(id, name, age);
         return res.status(204).json(user);
     }
 
-    destroy(req,res) {
+    async destroy(req,res) {
         var id = req.params.id;
-        userUseCase.delete(id);
+        await userUseCase.delete(id);
         return res.send();
     }
 

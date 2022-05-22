@@ -3,13 +3,12 @@
 
 ## Dados Usuário
 - nome
-- email
 - imagem
 - endereço chave estrangeira
 ## Dados Endereço
 - cep
 - logradouro
-- complemento"
+- complemento
 - bairro
 - localidade
 - uf
@@ -53,6 +52,20 @@
     - server.ts
 ```
 
+## Prisma ORM
+- npm install prisma --save-dev
+- npx prisma init
+- Extersões VS Code
+    - Prisma
+    - Prisma Insider
+- npx prisma format
+- npx prisma migrate dev --name init
+    - Cria a migration
+    - Roda comando SQL
+
+-https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/install-prisma-client-node-postgres
+
+- https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/querying-the-database-node-postgres
 ## Referências
 - https://www.typescriptlang.org/
 - https://www.toptal.com/developers/gitignore

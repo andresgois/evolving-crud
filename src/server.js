@@ -1,5 +1,9 @@
+require('dotenv').config();
+require('module-alias/register')
 require('express-async-errors');
 const app = require('./routes')
+const config = require('@config');
+
 
 app.use( (error, req, res, next) => {
     if( error instanceof Error){
@@ -16,6 +20,6 @@ app.use( (error, req, res, next) => {
     //next(error);
 })
 
-app.listen(3000, () => {
+app.listen(config.app.port, () => {
     console.log('Server is running!')
 })

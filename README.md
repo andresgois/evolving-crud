@@ -63,9 +63,56 @@
     - Cria a migration
     - Roda comando SQL
 
--https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/install-prisma-client-node-postgres
+## Dependência
+- npm i module-alias
+- npm i dotenv
 
-- https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/querying-the-database-node-postgres
+## 
+```mermaid
+graph TD;
+    ./-->Prisma;
+    ./-->src;
+    ./-->.env;
+    src-->database
+    src-->config
+    src-->helps
+    src-->modules
+    src-->routes
+    src-->server.js
+    modules-->User
+    modules-->middleware
+    User-->models
+    User-->repository
+    User-->test
+    User-->service
+    routes-->index
+    routes-->userRoutes
+```
+
+##
+
+
+```mermaid
+classDiagram
+    Class01 <|-- AveryLongClass : Cool
+    Class03 *-- Class04
+    Class05 o-- Class06
+    Class07 .. Class08
+    Class09 --> C2 : Where am i?
+    Class09 --* C3
+    Class09 --|> Class07
+    Class07 : equals()
+    Class07 : Object[] elementData
+    Class01 : size()
+    Class01 : int chimp
+    Class01 : int gorilla
+    Class08 <--> C2: Cool label
+```
+
 ## Referências
 - https://www.typescriptlang.org/
 - https://www.toptal.com/developers/gitignore
+- https://mermaid-js.github.io/mermaid/#/
+-https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/install-prisma-client-node-postgres
+- https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/querying-the-database-node-postgres
+

@@ -4,6 +4,7 @@ require('express-async-errors');
 const app = require('./routes')
 const config = require('@config');
 
+app.use(express.json())
 
 app.use( (error, req, res, next) => {
     if( error instanceof Error){

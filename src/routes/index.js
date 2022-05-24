@@ -1,6 +1,16 @@
 const express = require("express");
-const route  = require("./userRoutes");
+const routeUser  = require("./userRoutes");
+const routePost  = require("./routePost");
 
+const route = express.Router();
+
+route.use('/users', routeUser)
+
+route.use('/posts', routePost)
+
+module.exports = route;
+
+/*
 class App {
 
     constructor(){
@@ -17,7 +27,8 @@ class App {
     
     routes(){
         this.server.use(route)
+        this.server.use(routePost)
     }
 }
 
-module.exports = new App().server;
+module.exports = new App().server;*/

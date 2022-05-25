@@ -19,12 +19,14 @@ class UserController {
     }
 
     async create(req,res) {
+        console.log(req.file.originalname)
+        const img = "http://localhost:3000/public/file-"+req.file.originalname;
         var { 
-            name, imagem, cep,logradouro,complemento,bairro,localidade,uf 
+            name, cep,logradouro,complemento,bairro,localidade,uf 
         } = req.body;
 
         await userService.store(
-            name, imagem, cep,logradouro,complemento,bairro,localidade,uf 
+            name, img, cep,logradouro,complemento,bairro,localidade,uf 
         );
         return res.status(201).send()
     }

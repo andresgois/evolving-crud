@@ -1,34 +1,30 @@
 const express = require("express");
 const routeUser  = require("./userRoutes");
-const routePost  = require("./routePost");
+const routePost  = require('./postRoutes')
 
-const route = express.Router();
+const route = express();
 
-route.use('/users', routeUser)
+route.use(express.json())
+
+route.use('/user', routeUser)
 
 route.use('/posts', routePost)
 
+
+route.use( (error, req, res, next) => {
+    if( error instanceof Error){
+        return res.status(404).json({
+            status: 'error',
+            message: `${error.message}`,
+        })
+    }
+
+    return res.status(500).json({
+        status: 'error',
+        message: `Internal server error - ${error.message}`,
+    })
+    //next(error);
+})
+
+
 module.exports = route;
-
-/*
-class App {
-
-    constructor(){
-        this.server = express();
-
-        this.middleware();
-        this.routes();
-    }
-
-    middleware(){
-        // cors
-        this.server.use(express.json())
-    }
-    
-    routes(){
-        this.server.use(route)
-        this.server.use(routePost)
-    }
-}
-
-module.exports = new App().server;*/

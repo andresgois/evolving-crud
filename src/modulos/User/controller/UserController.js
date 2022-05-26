@@ -19,12 +19,13 @@ class UserController {
     }
 
     async create(req,res) {
-        console.log(req.file.originalname)
-        const img = "http://localhost:3000/public/file-"+req.file.originalname;
+        //console.log(req.file)
+        const img = req.file.location? req.file.location : "http://localhost:3000/user/files/"+req.file.key;
+        //const img = req.file.location;
         var { 
-            name, cep,logradouro,complemento,bairro,localidade,uf 
+            name, cep, logradouro,complemento,bairro,localidade,uf 
         } = req.body;
-
+        
         await userService.store(
             name, img, cep,logradouro,complemento,bairro,localidade,uf 
         );

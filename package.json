@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^3.14.0",
+    "aws-sdk": "^2.1143.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
@@ -24,6 +25,7 @@
     "jest": "^28.1.0",
     "module-alias": "^2.2.2",
     "multer": "^1.4.4",
+    "multer-s3": "^2.10.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

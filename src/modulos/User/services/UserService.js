@@ -1,4 +1,3 @@
-const { v4: uuid } = require('uuid');
 const UserRepository = require('../repository/UserRepository');
 
 class UserService {
@@ -9,6 +8,14 @@ class UserService {
         return users;
     }
 
+    async indexOne(id){
+        var user = await UserRepository.listUser(id)
+        if(!user){
+            throw new Error("User not found!");
+        }
+       return user; 
+    }
+
     async store(name, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
         // verificar se estão todos os dados
         var user = await UserRepository.createUser(
@@ -17,6 +24,16 @@ class UserService {
 
         return  user;
     }
+
+    async delete(id){
+        var user = await UserRepository.listUser(id)
+        if(!user){
+            throw new Error("User not found!");
+        }
+        await UserRepository.
+         
+        return;
+     }
     /*
     indexOne(id){
         var user = this.users.find( u => u.id === id);

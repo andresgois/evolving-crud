@@ -6,6 +6,7 @@ const path = require('path')
 const multer = require('multer');
 //route.use('/public',express.static('public'));
 const verifyImage = require('../modulos/middleware/verifyImage');
+const removeImage = require('../modulos/middleware/removeImage');
 route.use('/files', express.static(path.resolve(__dirname, '..','..','public')))
 //const uploadsFolder = path.resolve(__dirname, '..', '..', 'public')
 
@@ -31,7 +32,7 @@ route.post('/', multer(multerConfig).single('file'), verifyImage, userController
 
 route.put('/:id', userController.update);
 
-route.delete('/:id', userController.destroy);
+route.delete('/:id', removeImage, userController.destroy);
 
 
 module.exports = route;

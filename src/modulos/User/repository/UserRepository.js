@@ -11,11 +11,15 @@ async function listAllUsers(){
     return result;
 }
 
-async function createUser(name, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
-    
-    /*const end = await prisma.address.create({
+async function listUser(id){
+    const result = await prisma.user.findFirst({
+        where: { id: id},
+        include: { Address: true }
+    })
+    return result
+}
 
-    })*/
+async function createUser(name, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
 
     const result = await prisma.user.create({
         data: {
@@ -37,5 +41,13 @@ async function createUser(name, imagem, cep,logradouro,complemento,bairro,locali
     return result;
 }
 
+async function deleteUser(id){
+    const result = await prisma.user.delete({
+        where: { id: id},
+        include: { Address: true }
+    })
+    return result
+}
 
-module.exports = { listAllUsers, createUser }
+
+module.exports = { listAllUsers, createUser, listUser, deleteUser}

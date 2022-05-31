@@ -16,10 +16,10 @@ class UserService {
        return user; 
     }
 
-    async store(name, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
+    async store(name, email,senha, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
         // verificar se estão todos os dados
         var user = await UserRepository.createUser(
-            name, imagem, cep,logradouro,complemento,bairro,localidade,uf 
+            name, email,senha, imagem, cep,logradouro,complemento,bairro,localidade,uf 
         );
 
         return  user;

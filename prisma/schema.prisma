@@ -13,6 +13,8 @@ datasource db {
 model User {
   id     String  @id @default(uuid())
   name   String
+  email   String? 
+  senha   String?
   imagem String?
 
   Address   Address[]

@@ -1,4 +1,5 @@
 const prisma = require("../../../database/prismaClient");
+const { hash } = require('bcrypt');
 
 async function listAllUsers(){
     //const result = await prisma.user.findMany({
@@ -19,12 +20,14 @@ async function listUser(id){
     return result
 }
 
-async function createUser(name, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
-
+async function createUser(name,email,senha, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
+    const senhaHash = await hash(senha, 8);
     const result = await prisma.user.create({
         data: {
             name: name,
             imagem: imagem,
+            email: email,
+            senha: senhaHash,
             Address: {
                 create: {
                     cep,

@@ -1,3 +1,4 @@
+const removerImg = require('../../../helps/removeImg');
 const UserRepository = require('../repository/UserRepository');
 
 class UserService {
@@ -27,21 +28,16 @@ class UserService {
 
     async delete(id){
         var user = await UserRepository.listUser(id)
+        const imgDelete = user.imagem.split('files/')[1]
+        console.log(imgDelete)
         if(!user){
             throw new Error("User not found!");
         }
-        await UserRepository.
-         
+        await UserRepository.deleteUser(id)
+        removerImg(imgDelete)
         return;
      }
     /*
-    indexOne(id){
-        var user = this.users.find( u => u.id === id);
-        if(!user){
-            throw new Error("User not found!");
-        }
-       return user; 
-    }
     update(id, name, age){
        var user = this.users.find( u => u.id === id);
        var position = this.users.indexOf(user);
@@ -52,15 +48,6 @@ class UserService {
         } );
         
        return  user
-    }
-
-    delete(id){
-       var user = this.users.find( u => u.id === id);
-       var position = this.users.indexOf(user);
-       
-       this.users.splice(position, 1)
-        
-       return
     }*/
 }
 

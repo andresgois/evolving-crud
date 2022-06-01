@@ -4,9 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
 
-
-
-
 module.exports = function (req, res, next) {
     console.log('LOGGED');
     if(process.env.STORAGE_TYPE === 's3'){

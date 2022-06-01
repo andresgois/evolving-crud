@@ -2,7 +2,6 @@ const prisma = require("../../../database/prismaClient");
 const { hash } = require('bcrypt');
 
 async function listAllUsers(){
-    //const result = await prisma.user.findMany({
     const result = await prisma.user.findMany({
         include: {
             Address: true,

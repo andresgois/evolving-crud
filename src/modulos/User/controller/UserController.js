@@ -47,6 +47,13 @@ class UserController {
         return res.send();
     }
 
+    async turnIntoAdministrator(req,res) {
+        var id = req.params.id;
+        await userService.turnAdministrator(id)
+
+        return res.json({sucess: true, message: "User is admin!"});
+    }
+
 }
 
 module.exports = UserController;

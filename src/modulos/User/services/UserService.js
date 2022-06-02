@@ -42,18 +42,35 @@ class UserService {
         removerImg(imgDelete)
         return;
      }
-    /*
-    update(id, name, age){
-       var user = this.users.find( u => u.id === id);
-       var position = this.users.indexOf(user);
-       
-        Object.assign(this.users[position], { 
-            name: name, 
-            age: age 
-        } );
-        
-       return  user
-    }*/
+
+     async update(id, name, email,senha, imagem, cep,logradouro,complemento,bairro,localidade,uf){
+        var user = await UserRepository.listUser(id)
+        if(!user){
+            throw new Error("User not found!");
+        }
+        await UserRepository.updateUser(id, name, email,senha, imagem, cep,logradouro,complemento,bairro,localidade,uf)
+         
+        return  user
+     }
+
+     async turnAdministrator(id){
+        var user = await UserRepository.listUser(id)
+        if(!user){
+            throw new Error("User not found!");
+        }
+        await UserRepository.turnIntoAdministrator(id)
+        return;
+     }
+
+     async verifyAdmin(id){
+         console.log('verifyAdmin')
+        var user = await UserRepository.listUser(id)
+        if(!user){
+            throw new Error("User not found!");
+        }
+        return user.admin;
+     }
+
 }
 
 module.exports = UserService;

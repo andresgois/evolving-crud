@@ -34,6 +34,7 @@ async function createUser(name,email,senha, imagem, cep,logradouro,complemento,b
             imagem: imagem,
             email: email,
             senha: senhaHash,
+            admin: false,
             Address: {
                 create: {
                     cep,
@@ -58,5 +59,13 @@ async function deleteUser(id){
     return result
 }
 
+async function turnIntoAdministrator(id){
+    const result = await prisma.user.update({
+        where: { id: id},
+        data: { admin: true }
+    })
+    return result
+}
 
-module.exports = { listAllUsers, createUser, listUser, deleteUser, listUserByEmail}
+
+module.exports = { listAllUsers, createUser, listUser, deleteUser, listUserByEmail, turnIntoAdministrator}

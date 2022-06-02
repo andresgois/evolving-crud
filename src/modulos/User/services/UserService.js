@@ -28,12 +28,17 @@ class UserService {
 
     async delete(id){
         var user = await UserRepository.listUser(id)
-        const imgDelete = user.imagem.split('files/')[1]
+        //const imgDelete = user.imagem.split('files/')[1]
+        const imgDelete = user.imagem;
         console.log(imgDelete)
         if(!user){
             throw new Error("User not found!");
         }
-        await UserRepository.deleteUser(id)
+        try {            
+            await UserRepository.deleteUser(id)
+        } catch (error) {
+            throw new Error(`Erro ao deletar dados: ${error.message}`)
+        }
         removerImg(imgDelete)
         return;
      }

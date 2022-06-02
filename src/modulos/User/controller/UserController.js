@@ -20,16 +20,17 @@ class UserController {
 
     async create(req,res) {
         //console.log(req.file)
-        const img = req.file.location? req.file.location : "http://localhost:3000/user/files/"+req.file.key;
-        //const img = req.file.location;
+        //const img = req.file.location? req.file.location : "http://localhost:3000/user/files/"+req.file.key;
+        const img = req.file.key;
+
         var { 
-            name, email,senha, cep, logradouro,complemento,bairro,localidade,uf 
+            name, email,senha, cep, logradouro, complemento, bairro, localidade, uf 
         } = req.body;
         
         await userService.store(
-            name,email,senha, img, cep,logradouro,complemento,bairro,localidade,uf 
+            name, email, senha, img, cep, logradouro, complemento, bairro, localidade, uf 
         );
-        return res.status(201).send()
+        return res.status(201).send();
     }
 
     async update(req,res) {

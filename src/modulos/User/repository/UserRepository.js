@@ -19,6 +19,13 @@ async function listUser(id){
     return result
 }
 
+async function listUserByEmail(email){
+    const result = await prisma.user.findFirst({
+        where: { email},
+    })
+    return result
+}
+
 async function createUser(name,email,senha, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
     const senhaHash = await hash(senha, 8);
     const result = await prisma.user.create({
@@ -52,4 +59,4 @@ async function deleteUser(id){
 }
 
 
-module.exports = { listAllUsers, createUser, listUser, deleteUser}
+module.exports = { listAllUsers, createUser, listUser, deleteUser, listUserByEmail}

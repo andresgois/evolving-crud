@@ -1,12 +1,15 @@
 const express = require("express");
 const routeUser  = require("./userRoutes");
 const routePost  = require('./postRoutes')
+const routeLogin  = require('./LoginRoutes')
 
 const route = express();
 
 route.use(express.json())
 
 route.use('/user', routeUser)
+
+route.use('/login', routeLogin)
 
 route.use('/posts', routePost)
 

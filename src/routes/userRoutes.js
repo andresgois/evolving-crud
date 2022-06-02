@@ -4,8 +4,6 @@ const route = express();
 const path = require('path')
 const multer = require('multer');
 const multerConfig = require('../helps/upload')
-const verifyImage = require('../modulos/middleware/verifyImage');
-
 
 route.use('/files', express.static(path.resolve(__dirname, '..','..','public')))
 
@@ -15,7 +13,7 @@ route.get('/', userController.listAll);
 
 route.get('/:id', userController.listOne);
 
-route.post('/', multer(multerConfig).single('file'), verifyImage, userController.create);
+route.post('/', multer(multerConfig).single('file'), userController.create);
 
 route.put('/:id', userController.update);
 

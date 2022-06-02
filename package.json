@@ -36,6 +36,10 @@
   "_moduleAliases": {
     "@root": ".",
     "@app": "./src",
-    "@config": "./src/config"
+    "@config": "./src/config",
+    "@Login": "./src/modulos/Login",
+    "@Post": "./src/modulos/Post",
+    "@User": "./src/modulos/User",
+    "@Middleware": "./src/modulos/middleware"
   }
 }

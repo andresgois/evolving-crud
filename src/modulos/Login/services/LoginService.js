@@ -14,21 +14,9 @@ class LoginService {
 
         const compareUser = await compare(senha, user.senha);
         if(compareUser){
-            token = sign({id: user.id, email: user.email}, process.env.JWT_SECRET, {expiresIn: 300} );
-            //console.log(token)
+            token = sign({id: user.id, email: user.email}, process.env.JWT_SECRET, {expiresIn: '1h'} );
         }
-        var t = token.split('.')[1]
-        // let buff = new Buffer(t, 'base64');
-        // let text = buff.toString('ascii');
-        // console.log(text)
-        // console.log(compareUser)
-        const buffer = Buffer.from(t, 'base64').toString()
-        console.log('buffer')
-        var b = JSON.parse(buffer)
-        console.log(b.email)
-        console.log(buffer)
-
-
+       
        return {
            email,
            token

@@ -4,7 +4,6 @@ const userService = new UserService();
 
 class UserController {
 
-
     async listAll(req, res) {
         const users = await userService.index();
 
@@ -19,8 +18,6 @@ class UserController {
     }
 
     async create(req,res) {
-        //console.log(req.file)
-        //const img = req.file.location? req.file.location : "http://localhost:3000/user/files/"+req.file.key;
         const img = req.file.key;
 
         var { 

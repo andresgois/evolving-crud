@@ -5,8 +5,6 @@ const path = require('path');
 const { promisify } = require('util');
 
 function removerImg(imagem) {
-    console.log("imagem: "+imagem)
-    console.log('LOGGED');
     if(!imagem){
         return;
     }

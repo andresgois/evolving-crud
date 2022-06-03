@@ -1,6 +1,6 @@
 const express = require('express');
-const LoginController = require('../modulos/Login/controller/LoginController');
 const route = express();
+const LoginController = require('@Login/controller/LoginController');
 
 const loginController = new LoginController();
 

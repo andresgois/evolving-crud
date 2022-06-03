@@ -40,6 +40,6 @@
     "@Login": "./src/modulos/Login",
     "@Post": "./src/modulos/Post",
     "@User": "./src/modulos/User",
-    "@Middleware": "./src/modulos/middleware"
+    "@Middleware": "./src/middleware"
   }
 }

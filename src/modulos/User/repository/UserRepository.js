@@ -53,8 +53,7 @@ async function createUser(name,email,senha, imagem, cep,logradouro,complemento,b
 
 async function deleteUser(id){
     const result = await prisma.user.delete({
-        where: { id: id},
-        include: { Address: true }
+        where: { id: id}
     })
     return result
 }

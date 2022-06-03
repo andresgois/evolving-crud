@@ -18,6 +18,10 @@ class UserService {
     }
 
     async store(name, email,senha, imagem, cep,logradouro,complemento,bairro,localidade,uf ){
+        var userAlreadyExists = await UserRepository.listUserByEmail(email)
+        if(userAlreadyExists){
+            throw new Error("User Already Exists!");
+        }
         // verificar se estão todos os dados
         var user = await UserRepository.createUser(
             name, email,senha, imagem, cep,logradouro,complemento,bairro,localidade,uf 

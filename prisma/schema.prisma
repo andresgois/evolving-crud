@@ -31,8 +31,8 @@ model Address {
   localidade  String
   uf          String
 
-  user    User   @relation(fields: [id_user], references: [id])
-  id_user String
+  user    User   @relation(fields: [id_user], references: [id], onDelete: Cascade, onUpdate: Cascade) 
+  id_user String 
 }
 
 model Post {
@@ -43,7 +43,7 @@ model Post {
 
 model PostsUser {
   id_user String @unique
-  user    User   @relation(fields: [id_user], references: [id])
+  user    User   @relation(fields: [id_user], references: [id], onDelete: Cascade, onUpdate: Cascade)
   id_post String @unique
-  post    Post   @relation(fields: [id_post], references: [id])
+  post    Post   @relation(fields: [id_post], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }

@@ -4,6 +4,8 @@
 ## Dados Usuário
 - nome
 - imagem
+- email
+- senha
 - endereço chave estrangeira
 ## Dados Endereço
 - cep
@@ -29,9 +31,6 @@
 - **Adicionar ao projeto .gitignore**
 
 ### Importante
-
-
-
 
 ## Estrutura do Projeto
 ```
@@ -91,7 +90,6 @@ graph TD;
 
 ##
 
-
 ```mermaid
 classDiagram
     Class01 <|-- AveryLongClass : Cool
@@ -109,10 +107,21 @@ classDiagram
     Class08 <--> C2: Cool label
 ```
 
+### Comandos Prisma
+- npx prisma migrate dev --name create_new_fields
+- npx prisma migrate dev
+
+### Observações
+#### Decryptar parte do token jwt
+```
+var t = token.split('.')[1]
+const buffer = Buffer.from(t, 'base64').toString()
+var b = JSON.parse(buffer)
+```
+
 ## Referências
 - https://www.typescriptlang.org/
 - https://www.toptal.com/developers/gitignore
 - https://mermaid-js.github.io/mermaid/#/
--https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/install-prisma-client-node-postgres
+- https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/install-prisma-client-node-postgres
 - https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/querying-the-database-node-postgres
-

@@ -12,7 +12,7 @@ module.exports = function (req, res, next) {
 
   try {
     const d = verify(token, process.env.JWT_SECRET);
-    //console.log(d)
+    console.log(d)
 
     next();
   } catch(e) {

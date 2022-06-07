@@ -11,10 +11,18 @@ class LoginService {
         if(!user){
             throw new Error("Invalid login!");
         }
-
-        const compareUser = await compare(senha, user.senha);
-        if(compareUser){
-            token = sign({id: user.id, email: user.email}, process.env.JWT_SECRET, {expiresIn: '1h'} );
+        
+        try {
+            const compareUser = await compare(senha, user.senha);
+            if(compareUser){
+                token = sign(
+                    {id: user.id, email: user.email}, 
+                    process.env.JWT_SECRET, 
+                    {expiresIn: '1h'} 
+                );
+            }
+        } catch (error) {
+            throw new Error(error)
         }
        
        return {

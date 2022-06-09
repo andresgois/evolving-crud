@@ -19,7 +19,7 @@ route.post('/', Authenticate, multer(multerConfig).single('file'), userControlle
 
 route.put('/:id', Authenticate, userController.update);
 
-route.delete('/:id', Authenticate, userController.destroy);
+route.delete('/:id', isAdmin, userController.destroy);
 
 route.put(
     '/admin/:id',

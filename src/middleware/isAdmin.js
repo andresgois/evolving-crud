@@ -3,8 +3,7 @@ const { verify } = require('jsonwebtoken')
 
 const userService = new UserService();
 
-module.exports = function (req, res, next) {
-  console.log('IsAdmin')
+module.exports = async function (req, res, next) {
   const authHeader = req.headers.authorization;
 
   if(!authHeader){
@@ -14,7 +13,7 @@ module.exports = function (req, res, next) {
   const [, token] = authHeader.split(" ");
 
   const { id } = verify(token, process.env.JWT_SECRET);
-  const user = userService.verifyAdmin(id)
+  const user = await userService.verifyAdmin(id)
   console.log(user)
 
   if(!user){

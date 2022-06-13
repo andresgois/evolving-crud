@@ -2,10 +2,10 @@
   "name": "crudjs",
   "version": "0.0.1",
   "description": "crud with js",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon --inspect src/server.js",
+    "start": "node src/app.js",
+    "dev": "nodemon --inspect src/app.js",
     "test": "test"
   },
   "keywords": [
@@ -16,6 +16,8 @@
   "author": "André Gois",
   "license": "MIT",
   "dependencies": {
+    "apidoc": "^0.51.1",
+    "apidoc-plugin-schema": "^0.1.8",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
     "uuid": "^8.3.2"

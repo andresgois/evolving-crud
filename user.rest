@@ -1,0 +1,27 @@
+###
+GET http://localhost:3000/users HTTP/1.1
+###
+
+GET http://localhost:3000/user/499c0043-89b0-4c1f-b4e9-bfb2bd310c95 HTTP/1.1
+
+###
+POST http://localhost:3000/user HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Luana",
+    "age": 25
+}
+
+###
+PUT http://localhost:3000/user/499c0043-89b0-4c1f-b4e9-bfb2bd310c95 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Marcio Update",
+    "age": 25
+}
+
+###
+DELETE http://localhost:3000/user/499c0043-89b0-4c1f-b4e9-bfb2bd310c95 HTTP/1.1
+content-type: application/json

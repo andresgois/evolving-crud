@@ -14,7 +14,7 @@ module.exports = async function (req, res, next) {
 
   const { id } = verify(token, process.env.JWT_SECRET);
   const user = await userService.verifyAdmin(id)
-  console.log(user)
+  //console.log(user)
 
   if(!user){
     throw new Error("User isn't admin!")

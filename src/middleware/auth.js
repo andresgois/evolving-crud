@@ -1,7 +1,7 @@
 const { verify } = require('jsonwebtoken')
 
 module.exports = function (req, res, next) {
-  console.log('Auth')
+  //console.log('Auth')
   const authHeader = req.headers.authorization;
 
   if(!authHeader){
@@ -12,7 +12,7 @@ module.exports = function (req, res, next) {
 
   try {
     const d = verify(token, process.env.JWT_SECRET);
-    console.log(d)
+    //console.log(d)
 
     next();
   } catch(e) {

@@ -38,7 +38,7 @@ jobs:
           target: "~/app"
           
           
-      - name: dependency update
+      - name: dependency update project
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}

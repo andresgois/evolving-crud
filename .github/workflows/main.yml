@@ -47,8 +47,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/app
-            npm i
-            pm2 restart crudjs_app          
+            npm i         
 
             
     

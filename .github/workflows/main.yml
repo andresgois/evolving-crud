@@ -35,6 +35,21 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY}}
           source: "., !node_modules"
-          target: "test"
+          target: "~/app"
+          
+          
+      - name: dependency update
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/app
+            npm i
+            pm2 restart crudjs_app          
+
+            
     
     

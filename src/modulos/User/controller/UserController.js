@@ -18,15 +18,24 @@ class UserController {
     }
 
     async create(req,res) {
-        console.log(req.file)
-        const img = req.file.key ? req.file.key: null;
+        //console.log(req.file)
+        let img = req.file.key ? req.file.key: null;
 
         var { 
             name, email,senha, cep, logradouro, complemento, bairro, localidade, uf 
         } = req.body;
         
         await userService.store(
-            name, email, senha, img=null, cep, logradouro, complemento, bairro, localidade, uf 
+            name, 
+            email, 
+            senha, 
+            img=null, 
+            cep, 
+            logradouro, 
+            complemento, 
+            bairro, 
+            localidade, 
+            uf 
         );
         return res.status(201).send();
     }

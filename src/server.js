@@ -4,6 +4,8 @@ require('express-async-errors');
 const app = require('./routes')
 const config = require('@config');
 
-app.listen(config.app.port, () => {
-    console.log('Server is running!')
+const PORT = Number(config.app.port);
+
+app.listen(PORT, () => {
+    console.log('Server is running!'+typeof config.app.port)
 })

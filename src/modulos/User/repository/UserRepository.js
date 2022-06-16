@@ -3,9 +3,19 @@ const { hash } = require('bcrypt');
 
 async function listAllUsers(){
     const result = await prisma.user.findMany({
-        include: {
-            Address: true,
-        }
+        select: {
+            name: true,
+            email: true,
+            admin: true,
+            Address: {
+                select: {
+                    logradouro: true,
+                    bairro: true,
+                    localidade: true,
+                    uf: true,
+                }
+            }
+          },
     });
     
     return result;

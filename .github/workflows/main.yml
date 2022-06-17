@@ -37,18 +37,19 @@ jobs:
           source: "., !node_modules"
           target: "~/app"
           
-          
-      - name: dependency update
+      - name: Update API
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY}}
           script: |
+            pwd
             cd ~/app
+            pwd
             npm i
-            pm2 restart crudjs_app          
+            pm2 restart crudjs_app        
 
             
     

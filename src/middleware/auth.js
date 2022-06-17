@@ -1,7 +1,6 @@
 const { verify } = require('jsonwebtoken')
 
 module.exports = function (req, res, next) {
-  //console.log('Auth')
   const authHeader = req.headers.authorization;
 
   if(!authHeader){

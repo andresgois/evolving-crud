@@ -13,9 +13,7 @@ module.exports = async function (req, res, next) {
   const [, token] = authHeader.split(" ");
 
   const { id } = verify(token, process.env.JWT_SECRET);
-  console.log(id)
   const user = await userService.verifyAdmin(id)
-  //console.log(user)
 
   if(!user){
     throw new Error("User isn't admin!")

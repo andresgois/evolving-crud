@@ -34,7 +34,6 @@ class UserService {
         var user = await UserRepository.listUser(id)
         //const imgDelete = user.imagem.split('files/')[1]
         const imgDelete = user.imagem;
-        //console.log(imgDelete)
         if(!user){
             throw new Error("User not found!");
         }
@@ -67,7 +66,6 @@ class UserService {
      }
 
      async verifyAdmin(id){
-        // console.log('verifyAdmin')
         var user = await UserRepository.listUser(id)
         if(!user){
             throw new Error("User not found!");

@@ -18,9 +18,7 @@ class UserController {
     }
 
     async create(req,res) {
-        //console.log(req.file)
         let img = req.file.key ? req.file.key: null;
-
         var { 
             name, email,senha, cep, logradouro, complemento, bairro, localidade, uf 
         } = req.body;
@@ -29,7 +27,7 @@ class UserController {
             name, 
             email, 
             senha, 
-            img=null, 
+            img, 
             cep, 
             logradouro, 
             complemento, 
@@ -42,9 +40,12 @@ class UserController {
 
     async update(req,res) {
         var id = req.params.id;
-        var { name, age } = req.body;
+        let img = null;
         
-        const user = await userService.update(id, name, age);
+        if(req.file.key !== null) img = req.file.key;
+        var { name, email,senha, cep, logradouro, complemento, bairro, localidade, uf } = req.body;
+        
+        const user = await userService.update(id, name, email,senha,img, cep, logradouro, complemento, bairro, localidade, uf);
         return res.status(204).json(user);
     }
 

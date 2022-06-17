@@ -1,4 +1,3 @@
-
 # API USER
 
 ## Dados Usuário

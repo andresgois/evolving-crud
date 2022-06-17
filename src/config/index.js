@@ -1,5 +1,5 @@
 module.exports = {
     app: {
-        port: Number(.Pprocess.envORT) || 4000,
+        port: Number(process.env.PORT) || 4000,
     },
 };

@@ -17,7 +17,7 @@ route.get('/:id', userController.listOne);
 
 route.post('/', Authenticate, isAdmin, multer(multerConfig).single('file'), userController.create);
 
-route.put('/:id', Authenticate, isAdmin, userController.update);
+route.put('/:id', Authenticate, isAdmin, multer(multerConfig).single('file'), userController.update);
 
 route.delete('/:id', isAdmin, userController.destroy);
 

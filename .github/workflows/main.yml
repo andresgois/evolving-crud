@@ -38,14 +38,16 @@ jobs:
           target: "~/app"
           
       - name: Update API
-        uses: appleboy/ssh-action@main
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY}}
           script: |
+            pwd
             cd ~/app
+            pwd
             npm i
             pm2 restart crudjs_app        
 

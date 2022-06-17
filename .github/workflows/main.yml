@@ -37,7 +37,6 @@ jobs:
           source: "., !node_modules"
           target: "~/app"
           
-          
       - name: Update API
         uses: appleboy/ssh-action@master
         with:

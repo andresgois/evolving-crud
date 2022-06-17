@@ -46,7 +46,7 @@ jobs:
           key: ${{ secrets.SSH_KEY}}
           script: |
             cd ~/app
-            npm install
+            npm i
             pm2 restart crudjs_app        
 
             
